@@ -1,51 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HostPulse - By Payal</title>
-<style>
-:root{--bg:#0f172a;--card:#1e293b;--text:#e2e8f0;--muted:#94a3b8;--accent:#facc15}
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{background:var(--bg);color:var(--text);line-height:1.6}
-nav{position:sticky;top:0;z-index:10;background:#0f172a;display:flex;justify-content:space-between;align-items:center;padding:12px 20px;border-bottom:1px solid #1e293b}
-nav a{color:#94a3b8;text-decoration:none;margin:0 6px;font-size:13px}
-nav a:hover{color:#fff}
-.btn{padding:8px 16px;border-radius:8px;border:none;font-weight:700;cursor:pointer}
-.btn-y{background:var(--accent);color:#000} .btn-o{border:1px solid #334155;background:transparent;color:var(--text)}
-section{padding:50px 20px;max-width:1100px;margin:auto}
-.hero h1{font-size:38px;line-height:1.1;max-width:700px}
-.trace{background:var(--card);padding:20px;border-radius:12px;margin-top:20px;border:1px solid #334155}
-.trace input{width:65%;padding:10px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:#fff}
-.steps{display:flex;gap:10px;margin-top:15px;flex-wrap:wrap}
-.step{flex:1;min-width:120px;background:#0f172a;padding:10px;border-radius:8px;border:1px solid #334155;opacity:.5} .step.active{opacity:1;border-color:var(--accent)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:16px}
-.card{background:var(--card);padding:18px;border-radius:12px;border:1px solid #334155}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
-.tab{padding:7px 13px;border-radius:20px;border:1px solid #334155;background:transparent;color:var(--muted);cursor:pointer} .tab.active{background:#fff;color:#000}
-.check{margin:8px 0;background:var(--card);padding:10px;border-radius:8px;border:1px solid #334155}
-.prog{height:8px;background:#1e293b;border-radius:10px;margin:10px 0} .prog div{height:100%;background:var(--accent);width:0%}
-.faq{background:var(--card);padding:14px;border-radius:10px;margin:8px 0;border:1px solid #334155;cursor:pointer} .faq p{display:none;color:var(--muted);margin-top:6px} .faq.open p{display:block}
-footer{text-align:center;padding:25px;color:var(--muted);border-top:1px solid #1e293b;margin-top:30px;font-size:12px}
-</style>
+<html>
+<head><meta charset="UTF-8"><title>StudyHost - MCA Project By Payal</title>
+<style>body{background:#0d1117;color:#e6edf3;font-family:Segoe UI;padding:0;margin:0}
+nav{background:#161b22;padding:15px 30px;border-bottom:1px solid #30363d;display:flex;justify-content:space-between}
+.logo{color:#a78bfa;font-weight:800;font-size:20px}
+.hero{padding:40px;max-width:900px;margin:auto}
+.card{background:#161b22;border:1px solid #30363d;padding:20px;border-radius:12px;margin-top:20px}
+h1 span{color:#a78bfa}</style>
 </head>
 <body>
-<nav><b>Host<span style="color:#facc15">Pulse</span></b><div><a href="#home">Home</a><a href="#intro">Intro</a><a href="#how">How it works</a><a href="#types">Types</a><a href="#launch">Launch</a><a href="#platforms">Platforms</a><a href="#check">Checklist</a><a href="#faq">FAQ</a></div></nav>
-
-<section id="home"><h1>A website is just files on a computer that never switches off.</h1><p style="color:var(--muted);margin:12px 0;max-width:600px">Hosting is renting that always-on computer. Type a domain and trace how a request travels.</p><div><button class="btn btn-y" onclick="location.href='#intro'">Start with basics</button> <button class="btn btn-o" onclick="location.href='#launch'">Jump to launch steps</button></div><div class="trace"><input id="dom" placeholder="mysite.com" value="mysite.com"> <button class="btn btn-y" onclick="doTrace()">Trace request</button><div class="steps"><div class="step" id="s1"><b>Browser</b><br><small>Asks for page</small></div><div class="step" id="s2"><b>DNS</b><br><small>Name to IP</small></div><div class="step" id="s3"><b>Host server</b><br><small>Finds files</small></div><div class="step" id="s4"><b>Response</b><br><small>HTML CSS JS</small></div></div><small id="msg" style="color:var(--muted)">Press Trace to start.</small></div></section>
-
-<section id="intro"><h2>Introduction to Web Hosting</h2><p style="color:var(--muted)">Every website is made of HTML, CSS, JS, images. Visitors can reach them only if stored on a computer always on and connected to internet. That computer is called server.</p><div class="grid"><div class="card"><h3>Your files</h3><small>HTML, CSS, JS, images, database</small></div><div class="card"><h3>The host</h3><small>Company that keeps servers powered, cooled, secured</small></div><div class="card"><h3>The domain</h3><small>Readable name like example.com</small></div></div></section>
-
-<section id="how"><h2>How Web Hosting Works</h2><div class="tabs"><button class="tab active" onclick="showH(0)">1. Domain</button><button class="tab" onclick="showH(1)">2. DNS</button><button class="tab" onclick="showH(2)">3. Server</button><button class="tab" onclick="showH(3)">4. Web software</button><button class="tab" onclick="showH(4)">5. Browser</button></div><div class="card" id="howC"><h3>Stage 1: Domain</h3><p style="color:var(--muted)">You register a name with registrar. Name holds no website, only points.</p></div></section>
-
-<section id="types"><h2>Hosting Types</h2><div class="tabs"><button class="tab active" onclick="showT('Static')">Static</button><button class="tab" onclick="showT('Shared')">Shared</button><button class="tab" onclick="showT('VPS')">VPS</button><button class="tab" onclick="showT('Dedicated')">Dedicated</button><button class="tab" onclick="showT('Cloud')">Cloud</button></div><div class="card" id="typeC"><h3>Static - $0-5/month</h3><p style="color:var(--muted)">Fast, cheap, best for portfolios, docs, landing pages.</p></div></section>
-
-<section id="launch"><h2>Put a site online in six steps</h2><div class="grid"><div class="card"><b>1. Build</b><br><small style="color:var(--muted)">Write HTML CSS JS and test locally</small></div><div class="card"><b>2. Choose host</b><br><small style="color:var(--muted)">Static vs dynamic needs</small></div><div class="card"><b>3. Upload files</b><br><small style="color:var(--muted)">Git, drag-drop, SFTP. index.html entry</small></div><div class="card"><b>4. Register domain</b><br><small style="color:var(--muted)">$10-20/year</small></div><div class="card"><b>5. Point DNS</b><br><small style="color:var(--muted)">Add A, AAAA, CNAME</small></div><div class="card"><b>6. Turn on HTTPS</b><br><small style="color:var(--muted)">Free certificates auto</small></div></div></section>
-
-<section id="platforms"><h2>Platforms You Can Use Today</h2><div class="grid"><div class="card"><h3>GitHub Pages</h3><small>Free static from repo</small></div><div class="card"><h3>Netlify</h3><small>Drag folder or connect Git</small></div><div class="card"><h3>Vercel</h3><small>Best for Next.js</small></div><div class="card"><h3>Cloudflare Pages</h3><small>Global CDN + DNS</small></div></div></section>
-
-<section id="check"><h2>Pre-launch Checklist</h2><div class="prog"><div id="bar"></div></div><small id="cnt">0 of 7 done</small><div id="list"></div></section>
-
-<section id="faq"><h2>Common Questions</h2><div class="faq" onclick="this.classList.toggle('open')"><b>Do I need to pay for hosting?</b><p>No. GitHub Pages, Netlify, Vercel give free.</p></div><div class="faq" onclick="this.classList.toggle('open')"><b>Domain vs Hosting difference?</b><p>Domain is address, hosting is computer.</p></div><div class="faq" onclick="this.classList.toggle('open')"><b>What is CDN?</b><p>Copies files to many locations for speed.</p></div></section>
-
-<footer>Submitted by: Payal | Subject: Web Designing Fundamentals | Assignment 2 Unit 2<br>Live: payal0440.github.io/my-website</footer>
+<nav><div class="logo">StudyHost</div><div>MCA Project - Payal</div></nav>
+<div class="hero">
+<h1>StudyHost - <span>Web Hosting Concepts & Implementation</span></h1>
+<p>MCA Project 2026 | Developed & Hosted By Payal | Original Work</p>
+<div class="card">
+<h3>1. Introduction</h3><p>Web Hosting stores website files on a 24x7 server. This StudyHost project is hosted on GitHub Pages.</p>
+<h3>2. Working Model</h3><p>Browser -> DNS -> Hosting Server (GitHub) -> Response. Live at payal0440.github.io/my-website</p>
+<h3>3. Types of Hosting</h3><p>Shared, VPS, Dedicated, Cloud. This project uses Cloud GitHub Pages.</p>
+<h3>4. Conclusion</h3><p>Implemented live hosting successfully for MCA academic purpose.</p>
+</div>
+<p style="text-align:center;margin-top:20px;color:#a78bfa">© 2026 StudyHost | By Payal</p>
+</div>
+</body>
+</html>
